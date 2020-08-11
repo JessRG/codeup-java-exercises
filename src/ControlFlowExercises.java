@@ -102,13 +102,24 @@ public class ControlFlowExercises {
     // #4
     public static void gradesToLetters() {
         Scanner scan = new Scanner(System.in);
+        try {
+            String ans = "y";
 
-        System.out.print("Enter a number from 0 to 100? ");
-        int n = scan.nextInt();
+            do {
+                System.out.print("Enter a number from 0 to 100? ");
+                int n = scan.nextInt();
+                System.out.println( (n <= 100 && n >= 88)? 'A':
+                        (n < 88 && n >= 80)? 'B':
+                                (n < 80 && n >= 67)? 'C':
+                                        (n < 67 && n >= 60)? 'D': 'F');
 
-        System.out.println( (n <= 100 && n >= 88)? 'A':
-                (n < 88 && n >= 80)? 'B':
-                (n < 80 && n >= 67)? 'C':
-                (n < 67 && n >= 60)? 'D': 'F');
+                System.out.println("Do you want to get another letter grade? (y or n)");
+                 ans = scan.nextLine().toLowerCase();
+                 scan.nextLine();
+
+            } while(ans == "y");
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
