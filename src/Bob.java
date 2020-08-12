@@ -13,10 +13,13 @@ public class Bob {
                 String bobResp = bobResponse(input);
                 System.out.println(bobResp);
 
+                System.out.print("DM Bob again? ");
+                input = sc.nextLine().toLowerCase();
+
             } catch(Exception ex) {
                 System.out.println(ex.getMessage());
             }
-        } while(!input.equals("0"));
+        } while(!input.equals("n"));
     }
 
     public static String bobResponse(String input) {
