@@ -15,7 +15,7 @@ public class MethodsExercises {
         try {
 //            System.out.println(String.format("Addition: %d",addition(1, 4)));
 //            System.out.println(String.format("Subtraction: %d", subtraction(6, 2)));
-//            System.out.println(String.format("Multiplication: %d", multiplication(5, 4)));
+            System.out.println(String.format("Multiplication: %d", multiplication(-5, -4)));
 //            System.out.println(String.format("Division: %d", division(30, 6)));
 //            System.out.println(String.format("Modulus: %d", modulus(30, 5)));
 //
@@ -48,6 +48,9 @@ public class MethodsExercises {
 //        return sum;
         if (num2 == 1) {
             return num1;
+        }
+        if (num2 < 0) {
+            num2 = num2 * -1;
         }
 
         return num1 + multiplication(num1, num2 - 1);
@@ -112,7 +115,7 @@ public class MethodsExercises {
     }
 
     public static int rollDie(int dieSides) {
-        int rand = (int) (Math.random() * dieSides);
+        int rand = (int) (Math.random() * dieSides) + 1;
         return rand;
     }
 }
