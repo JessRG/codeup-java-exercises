@@ -115,8 +115,4 @@ public class MethodsExercises {
         int rand = (int) (Math.random() * dieSides);
         return rand;
     }
-
-//    public static void guessGame() {
-//
-//    }
 }
