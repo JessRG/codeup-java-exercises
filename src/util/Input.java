@@ -14,6 +14,7 @@ public class Input {
         return scanner.next().toLowerCase();
     }
 
+    // function to determine whether to continue or end the
     public boolean yesNo() {
         System.out.print("Do you want to enter some info again? ");
         String input = getString();
@@ -24,7 +25,7 @@ public class Input {
         }
     }
 
-    // Get the user's input
+    // Get the user's input for integers
     public int getInt(int min, int max) {
         int input;
         do {
@@ -47,6 +48,7 @@ public class Input {
         return scanner.nextInt();
     }
 
+    // Get the user's input for doubles
     public double getDouble(double min, double max) {
         double input;
         do {
@@ -57,6 +59,8 @@ public class Input {
         return input;
     }
 
+    // Overloading above method
+    // Get the user's input with the option String parameter "prompt"
     public double getDouble(String prompt) {
         double input = Double.parseDouble(prompt);
         return input;
