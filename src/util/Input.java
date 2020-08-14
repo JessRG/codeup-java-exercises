@@ -15,7 +15,7 @@ public class Input {
     }
 
     public boolean yesNo() {
-        System.out.print("Do you want to continue inputting a number? ");
+        System.out.print("Do you want to enter some info again? ");
         String input = getString();
         if (input.equals("y") || input.equals("yes")) {
             return true;
@@ -58,7 +58,6 @@ public class Input {
     }
 
     public double getDouble(String prompt) {
-        System.out.println(prompt);
         double input = Double.parseDouble(prompt);
         return input;
     }
