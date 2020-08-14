@@ -6,6 +6,7 @@ public class InputTest {
 
         Input input = new Input();
         do {
+            // input.getInt(1, 10);
             System.out.print("Enter some whole integer number: ");
             String userInput = input.getString();
             input.getInt(userInput);
