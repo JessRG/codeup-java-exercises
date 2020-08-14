@@ -5,33 +5,41 @@ import java.util.Scanner;
 public class Input {
     private Scanner scanner;
 
+    // Default Constructor
     public Input() {
         scanner = new Scanner(System.in);
     }
 
     public String getString() {
-        return scanner.nextLine();
+        return scanner.next().toLowerCase();
     }
 
     public boolean yesNo() {
-        scanner.nextLine().toLowerCase();
-        if (scanner.nextLine().equals("y") || scanner.nextLine().equals("yes")) {
+        System.out.print("Do you want to continue inputting a number? ");
+        String input = getString();
+        if (input.equals("y") || input.equals("yes")) {
             return true;
         } else {
             return false;
         }
     }
 
+    // Get the user's input
     public int getInt(int min, int max) {
         int input;
         do {
-            System.out.println("Please enter in an integer: ");
+            System.out.print("Please enter in an integer: ");
             input = getInt();
 
+        } while (input < min || input > max);
+        return input;
+    }
 
-
-        } while();
-
+    // Overloading above method
+    // Get the user's input with the option String parameter "prompt"
+    public int getInt(String prompt) {
+        System.out.println(prompt);
+        int input = Integer.parseInt(prompt);
         return input;
     }
 
@@ -40,7 +48,19 @@ public class Input {
     }
 
     public double getDouble(double min, double max) {
-        return scanner.nextDouble();
+        double input;
+        do {
+            System.out.print("Please enter in a double value: ");
+            input = getDouble();
+
+        } while (input < min || input > max);
+        return input;
+    }
+
+    public double getDouble(String prompt) {
+        System.out.println(prompt);
+        double input = Double.parseDouble(prompt);
+        return input;
     }
 
     public double getDouble() {
