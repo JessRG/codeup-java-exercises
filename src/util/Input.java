@@ -29,8 +29,7 @@ public class Input {
     public int getInt(int min, int max) {
         int input;
         do {
-            System.out.print("Please enter in an integer: ");
-            input = getInt();
+            input = getInt("Please enter in an integer: ");
 
         } while (input < min || input > max);
         return input;
@@ -39,9 +38,8 @@ public class Input {
     // Overloading above method
     // Get the user's input with the option String parameter "prompt"
     public int getInt(String prompt) {
-        System.out.println(prompt);
-        int input = Integer.parseInt(prompt);
-        return input;
+        System.out.print(prompt);
+        return getInt();
     }
 
     public int getInt() {
