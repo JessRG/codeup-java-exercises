@@ -6,12 +6,15 @@ public class ArraysExercises {
 //        int[] numbers = {1, 2, 3, 4, 5};
 //        System.out.println(numbers);
 
-        Person[] persons = new Person[3];
         String[] people = { "Vanessa", "Tommy", "Tracy" };
+        Person[] persons = {
+                new Person(people[0]),
+                new Person(people[1]),
+                new Person(people[2])
+        };
 
-        for (int i = 0; i < people.length; i++) {
-            persons[i] = new Person(people[i]);
-            System.out.println(persons[i].getName());
+        for (Person person : persons) {
+            System.out.println(person.getName());
         }
     }
 
