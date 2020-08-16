@@ -30,6 +30,7 @@ public class ServerNameGenerator {
         String adj = sname.getRandomElement(sname.adjs);
         String noun = sname.getRandomElement(sname.nouns);
 
+        // hyphenate random adjective and noun combo and display on the console
         System.out.println(String.format("\nHere is your server name:\n%s-%s", adj, noun));
     }
 }
