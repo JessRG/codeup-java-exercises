@@ -16,7 +16,7 @@ public class Input {
 
     // function to determine whether to continue or end the
     public boolean yesNo() {
-        System.out.print("Do you want to enter some info again? ");
+        System.out.print("Do you want to enter some info again? (Y/N) ");
         String input = getString();
         if (input.equals("y") || input.equals("yes")) {
             return true;
