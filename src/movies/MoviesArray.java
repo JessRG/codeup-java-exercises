@@ -1,5 +1,7 @@
 package movies;
 
+import java.util.Arrays;
+
 public class MoviesArray {
     public static Movie[] findAll() {
         return new Movie[]{
@@ -104,5 +106,13 @@ public class MoviesArray {
             new Movie("Guess Who's Coming To Dinner", "drama"),
             new Movie("Yankee Doodle Dandy", "musical")
         };
+    }
+
+    public static Movie[] addMovie(Movie[] movies, Movie movie) {
+        int newLength = movies.length + 1;
+        Movie[] newCopy = Arrays.copyOf(movies, newLength);
+        int lastElem = newCopy.length - 1;
+        newCopy[lastElem] = movie;
+        return newCopy;
     }
 }

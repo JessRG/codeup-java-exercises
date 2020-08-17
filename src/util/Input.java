@@ -11,14 +11,14 @@ public class Input {
     }
 
     public String getString() {
-        return scanner.next().toLowerCase();
+        return scanner.nextLine();
     }
 
     // function to determine whether to continue or end the
     public boolean yesNo() {
         System.out.print("Do you want to enter some info again? (Y/N) ");
         String input = getString();
-        if (input.equals("y") || input.equals("yes")) {
+        if (input.toLowerCase().equals("y") || input.toLowerCase().equals("yes")) {
             return true;
         } else {
             return false;
