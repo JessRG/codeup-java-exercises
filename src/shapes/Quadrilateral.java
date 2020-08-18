@@ -21,7 +21,7 @@ public abstract class Quadrilateral extends Shape {
 
     @Override
     public double getPerimeter() {
-        return 2 * getWidth() + 2 * getLength();
+        return 2 * (getWidth() + getLength());
     }
     @Override
     public double getArea() {
