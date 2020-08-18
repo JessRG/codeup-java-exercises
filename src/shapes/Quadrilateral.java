@@ -4,6 +4,8 @@ public abstract class Quadrilateral extends Shape {
     protected int length;
     protected int width;
 
+    public Quadrilateral() {}
+
     public Quadrilateral(int width, int length) {
         this.width = width;
         this.length = length;

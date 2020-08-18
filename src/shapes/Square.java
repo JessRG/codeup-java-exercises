@@ -19,12 +19,13 @@ package shapes;
 public class Square extends Quadrilateral {
 
     public Square(int sides) {
-        super(sides, sides);
+        this.length = sides;
+        this.width = sides;
     }
 
     @Override
     public void setLength(int length) {
-        this.length = width;
+        this.length = length;
     }
 
     @Override

@@ -2,15 +2,17 @@ package shapes;
 
 public class ShapesTest {
     public static void main(String[] args) {
-        Measurable box1 = new Rectangle(4, 5);
+        Measurable myShape = new Rectangle(4, 5);
         System.out.println(
-                String.format("\nbox1\n----\ngetPerimeter: %.3f\ngetArea: %.3f", box1.getPerimeter(), box1.getArea())
+                String.format("\nbox1\n----\ngetPerimeter: %.3f\ngetArea: %.3f", myShape.getPerimeter(), myShape.getArea())
         );
 
         // The methods that are overridden in the Square class
-        Measurable box2 = new Square(5);
+        myShape = new Square(5);
         System.out.println(
-                String.format("\nbox2\n----\ngetPerimeter: %.3f\ngetArea: %.3f", box2.getPerimeter(), box2.getArea())
+                String.format("\nbox2\n----\ngetPerimeter: %.3f\ngetArea: %.3f", myShape.getPerimeter(), myShape.getArea())
         );
+
+//        System.out.println(String.format("getLength(): %d getWidth(): %d", myShape.getLength(), myShape.getWidth()));
     }
 }
