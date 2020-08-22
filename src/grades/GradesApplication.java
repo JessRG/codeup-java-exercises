@@ -1,6 +1,7 @@
 package grades;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class GradesApplication {
@@ -31,10 +32,18 @@ public class GradesApplication {
             students.put(username, stud);
         }
 
-        for (HashMap.Entry mapElem : students.entrySet()) {
-            System.out.println(String.format("\nGithub: %s\nStudent name: %s\nAverage: %f",
-                    mapElem.getKey(), ((Student) mapElem.getValue()).getName(),
-                    ((Student) mapElem.getValue()).getGradeAverage()));
-        }
+//        for (HashMap.Entry mapElem : students.entrySet()) {
+//            String github = mapElem.getKey().toString(),
+//                    name = ((Student) mapElem.getValue()).getName(),
+//                    grades = Arrays.toString(((Student) mapElem.getValue()).getGrades().toArray());
+//            double avg = ((Student) mapElem.getValue()).getGradeAverage();
+//            System.out.println(
+//                    String.format("\nGithub: %s\nStudent Name: %s\nGrades: %s\nAverage: %f",
+//                            github, name, grades, avg)
+//            );
+//        }
     }
+
+    // define a function to be a command line interface
+    public static void cli(HashMap<String, Student> studs) {}
 }

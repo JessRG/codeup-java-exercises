@@ -18,6 +18,11 @@ public class Student {
         return name;
     }
 
+    // returns a shallow copy of student's grades
+    public ArrayList<Integer> getGrades() {
+        return (ArrayList) grades.clone();
+    }
+
     // adds the given grade to the grades property
     public void addGrade(int grade) {
         grades.add(grade);
