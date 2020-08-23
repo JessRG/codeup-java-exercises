@@ -25,7 +25,7 @@ public class CircleApp {
                 System.out.println(
                         String.format("\nCircle's radius: %.3f\n\nCircle's area: %.3f\nCircle's circumference: %.3f\n", rad, circle.getArea(), circle.getCircumference())
                 );
-            } while( input.yesNo() );
+            } while( input.yesNo("Would you like to enter another radius? ") );
         } catch(Exception ex) {
             System.out.println(ex.getMessage());
         } finally {

@@ -15,8 +15,8 @@ public class Input {
     }
 
     // function to determine whether to continue or end the
-    public boolean yesNo() {
-        System.out.print("Do you want to enter some info again? (Y/N) ");
+    public boolean yesNo(String prompt) {
+        System.out.print(prompt);
         String input = getString();
         if (input.toLowerCase().equals("y") || input.toLowerCase().equals("yes")) {
             return true;

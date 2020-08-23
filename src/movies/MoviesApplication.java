@@ -36,7 +36,7 @@ public class MoviesApplication {
                 userInput.getString();
                 movies = addANewMovie(userInput, movies);
             }
-        } while(userInput.yesNo());
+        } while(userInput.yesNo("Would you like to continue? "));
     }
 
     // Display movies with single movie array parameter
