@@ -1,9 +1,7 @@
 package grades;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.security.Key;
+import java.util.*;
 
 public class GradesApplication {
     // Declare Scanner tool to help get the user's prompt entries
@@ -22,34 +20,70 @@ public class GradesApplication {
     // define a function to be a command line interface
     public void cli(HashMap<String, Student> studs) {
 
-        System.out.println("Welcome!\n");
-        System.out.println("Here are the Github usernames of our students:");
-        displayUsernames(studs);
+        System.out.println("\nWelcome!\n");
 
         do {
-            String input = promptUser("\nWhat student would you like to see more information on?");
+            String menu = "Please make a selection: \n\n0 - exit\n1 - Search for student\n2 - Show all student grades";
+            int selection = Integer.parseInt(promptUser(menu));
 
-            if(studs.containsKey(input)) {
-                System.out.println(
-                        String.format(
-                                "\nName: %s - Github Username: %s\nGrades: %s\nCurrent Average: %f\n",
-                                studs.get(input).getName(), input,
-                                studs.get(input).getGrades(), studs.get(input).getGradeAverage()
-                        )
-                );
+            if (selection == 1) {
+                displayStudents(studs, 0);
+                do {
+                    String input = promptUser("What student would you like to see more information on?");
+                    input = checkInput(input, studs.keySet());
+
+                    if(studs.containsKey(input)) {
+                        System.out.println(
+                                String.format(
+                                        "Name: %s - Github Username: %s\nGrades: %s\nCurrent Average: %f\n",
+                                        studs.get(input).getName(), input,
+                                        studs.get(input).getGrades(), studs.get(input).getGradeAverage()
+                                )
+                        );
+                    } else if(input.equals("1")) {
+                        displayStudents(studs, 1);
+                    } else {
+                        System.out.println(
+                                String.format("Sorry, no student found with the Github username of \"%s\"\n", input)
+                        );
+                    }
+                } while(yesNo("Would you like to see another student? "));
+            } else if(selection == 2) {
+                displayStudents(studs, 1);
             } else {
-                System.out.println(
-                        String.format("\nSorry, no student found with the Github username of \"%s\"\n", input)
-                );
+                break;
             }
-        } while(yesNo());
+        } while(yesNo("Would you like to select from the menu again? "));
+
+    }
+
+    // function to check the user's input (case insensitive)
+    public String checkInput(String input, Set<String> keys) {
+        String result = input;
+        for(String key : keys) {
+            if (input.equalsIgnoreCase(key)) {
+                result = key;
+                break;
+            }
+        }
+        return result;
     }
 
     // function to display the student usernames to the console
-    public void displayUsernames(HashMap<String, Student> studs) {
+    public void displayStudents(HashMap<String, Student> studs, int choice) {
+        String printString;
         for (HashMap.Entry mapElem : studs.entrySet()) {
-            String username = String.format("|%s| ", mapElem.getKey());
-            System.out.print(username);
+            switch(choice) {
+                case 0:
+                     printString = String.format("|%s| ", mapElem.getKey());
+                    System.out.print(printString);
+                    break;
+                case 1:
+                    printString = String.format("\nGithub Username: %s\nGrades: %s",
+                            mapElem.getKey(), ((Student) mapElem.getValue()).getGrades());
+                    System.out.println(printString);
+                    break;
+            }
         }
         System.out.println();
     }
@@ -59,16 +93,17 @@ public class GradesApplication {
         System.out.println(String.format("%s\n", prompt));
         System.out.print("> ");
         String input = getString();
+        System.out.println();
         return input;
     }
 
     // function to prompt the user for their input; will determine if application continues
-    public boolean yesNo() {
-        String input =  promptUser("Would you like to see another student? ");
+    public boolean yesNo(String prompt) {
+        String input =  promptUser(prompt);
         if(input.toLowerCase().equals("y") || input.toLowerCase().equals("yes"))
             return true;
         else {
-            System.out.println("\nGoodbye, and have a wonderful day!");
+            System.out.println("Goodbye, and have a wonderful day!\n");
             return false;
         }
     }
