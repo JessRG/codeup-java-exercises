@@ -146,7 +146,7 @@ public class GradesApplication {
         // generate random grades, add them to each student
         for(Student stud : peeps) {
             for (int i = 0; i < 3; i++) {
-                stud.addGrade((int) (Math.random() * 101));
+                stud.addGrade((int) Math.ceil((Math.random() * 100)));
             }
             // generate random usernames for each student
             ArrayList<String> names0 = nameGen.getAdjs();

@@ -37,6 +37,12 @@ public class GroceryApplication {
                 // Enter name of the item.
                 //Enter how many of the item.
                 displayOrderedList();
+
+                String entry = input.getString();
+
+//                if (groceries.containsKey(entry)) {
+//
+//                }
             } while(input.yesNo("\nWould you like to add an item? "));
         }
     }
