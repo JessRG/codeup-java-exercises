@@ -18,6 +18,7 @@ public class Input {
     public boolean yesNo(String prompt) {
         System.out.print(prompt);
         String input = getString();
+        System.out.println();
         if (input.toLowerCase().equals("y") || input.toLowerCase().equals("yes")) {
             return true;
         } else {

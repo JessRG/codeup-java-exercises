@@ -23,10 +23,15 @@ public class GradesApplication {
         System.out.println("\nWelcome!\n");
 
         do {
-            String menu = "Please make a selection: \n\n0 - exit\n1 - Search for student\n2 - Show all student grades";
-            int selection = Integer.parseInt(promptUser(menu));
+            String menu = "Please make a selection: \n\n" +
+                    "0 - exit\n" +
+                    "1 - Search for student\n" +
+                    "2 - Show all student grades\n" +
+                    "3 - Overall class average\n" +
+                    "4 - Print csv report of all students";
+            String selection = promptUser(menu);
 
-            if (selection == 1) {
+            if (selection.equals("1")) {
                 displayStudents(studs, 0);
                 do {
                     String input = promptUser("What student would you like to see more information on?");
@@ -35,21 +40,24 @@ public class GradesApplication {
                     if(studs.containsKey(input)) {
                         System.out.println(
                                 String.format(
-                                        "Name: %s - Github Username: %s\nGrades: %s\nCurrent Average: %f\n",
+                                        "Name: %s - Github Username: %s\nGrades: %s\nCurrent Average: %.2f\n",
                                         studs.get(input).getName(), input,
                                         studs.get(input).getGrades(), studs.get(input).getGradeAverage()
                                 )
                         );
-                    } else if(input.equals("1")) {
-                        displayStudents(studs, 1);
                     } else {
                         System.out.println(
                                 String.format("Sorry, no student found with the Github username of \"%s\"\n", input)
                         );
                     }
                 } while(yesNo("Would you like to see another student? "));
-            } else if(selection == 2) {
+            } else if(selection.equals("2")) {
                 displayStudents(studs, 1);
+            } else if(selection.equals("3")) {
+                displayStudents(studs, 2);
+            } else if(selection.equals("4")) {
+                System.out.println("name,github_username,average");
+                displayStudents(studs, 3);
             } else {
                 break;
             }
@@ -72,6 +80,7 @@ public class GradesApplication {
     // function to display the student usernames to the console
     public void displayStudents(HashMap<String, Student> studs, int choice) {
         String printString;
+        double sum = 0;
         for (HashMap.Entry mapElem : studs.entrySet()) {
             switch(choice) {
                 case 0:
@@ -79,11 +88,23 @@ public class GradesApplication {
                     System.out.print(printString);
                     break;
                 case 1:
-                    printString = String.format("\nGithub Username: %s\nGrades: %s",
+                    printString = String.format("Github Username: %s\nGrades: %s",
                             mapElem.getKey(), ((Student) mapElem.getValue()).getGrades());
                     System.out.println(printString);
                     break;
+                case 2:
+                    sum += ((Student) mapElem.getValue()).getGradeAverage();
+                    break;
+                case 3:
+                    printString = String.format("%s,%s,%.1f",
+                            ((Student) mapElem.getValue()).getName(), mapElem.getKey(),
+                            ((Student) mapElem.getValue()).getGradeAverage());
+                    System.out.println(printString);
             }
+        }
+
+        if (choice == 2) {
+            System.out.println(String.format("Overall Class Average: %.2f", sum / studs.size()));
         }
         System.out.println();
     }

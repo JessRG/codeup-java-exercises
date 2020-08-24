@@ -11,11 +11,11 @@ public class GroceryApplication {
     // Default constructor for GroceryApplication class
     public GroceryApplication() {
         String[] categories = {
-                "Baby", "Beer, Wine & Spirits", "Beverages", "Bread & Bakery", "Breakfast & Cereal",
+                "Baby", "Beer,Wine & Spirits", "Beverages", "Bread & Bakery", "Breakfast & Cereal",
                 "Canned Goods & Soups", "Condiments/Spices & Bake", "Cookies,Snacks & Candy", "Diary,Eggs & Cheese",
                 "Deli & Signature Cafe", "Flowers", "Frozen Foods", "Produce: Fruits & Vegetables",
                 "Grains,Pasta & Sides", "International Cuisine", "Meat & Seafood", "Miscellaneous", "Paper Products",
-                "Cleaning Supplies", "Health & Beauty,Personal Care & Pharmacy", "Pet Care", "Pharmacy", "Tobacco"
+                "Cleaning Supplies", "Health & Beauty,Personal Care", "Pet Care", "Pharmacy", "Tobacco"
         };
         groceries = new HashMap<>();
         for (String category : categories) {
@@ -37,22 +37,22 @@ public class GroceryApplication {
                 // Enter name of the item.
                 //Enter how many of the item.
                 displayOrderedList();
-            } while(input.yesNo("Would you like to add another item? "));
+            } while(input.yesNo("\nWould you like to add an item? "));
         }
     }
 
     public void displayOrderedList() {
-//        Map<String, Grocery> map = new TreeMap<String, Grocery>(groceries);
-       for (HashMap.Entry category : groceries.entrySet()) {
-           System.out.println(category.getKey());
-       }
+        Map<String, ArrayList<Grocery>> map = new TreeMap<>(groceries);
+        for (HashMap.Entry category : map.entrySet()) {
+            System.out.println(category.getKey());
+        }
     }
 
     public static void main(String[] args) {
         Input userInput = new Input();
         GroceryApplication groceryList = new GroceryApplication();
 
-        boolean choice = userInput.yesNo("Would you like to create a grocery list? ");
+        boolean choice = userInput.yesNo("\nWould you like to create a grocery list? ");
 
         if (choice) {
             groceryList.buildGroceryList(userInput);

@@ -21,11 +21,6 @@ public class Student {
     // returns a shallow copy of student's grades
     public ArrayList<Integer> getGrades() {
         return (ArrayList) grades.clone();
-//        String result = "";
-//        for (Integer num : grades) {
-//            result += String.format("%d\n", num);
-//        }
-//        return result;
     }
 
     // adds the given grade to the grades property
