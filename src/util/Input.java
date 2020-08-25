@@ -40,11 +40,20 @@ public class Input {
     // Get the user's input with the option String parameter "prompt"
     public int getInt(String prompt) {
         System.out.print(prompt);
-        return getInt();
+//        return getInt();
+//        return getBinary();
+        return getHex();
     }
 
     public int getInt() {
-        return scanner.nextInt();
+        String input = getString();
+        int val = 0;
+        try {
+            val = Integer.valueOf(input);
+        } catch(NumberFormatException e) {
+            System.out.println(e.toString());
+        }
+        return val;
     }
 
     // Get the user's input for doubles
@@ -61,11 +70,45 @@ public class Input {
     // Overloading above method
     // Get the user's input with the option String parameter "prompt"
     public double getDouble(String prompt) {
-        double input = Double.parseDouble(prompt);
-        return input;
+        System.out.print(prompt);
+        return getDouble();
     }
 
     public double getDouble() {
-        return scanner.nextDouble();
+        String input = getString();
+        double val = 0.0;
+
+        try {
+            val = Double.valueOf(input);
+        } catch(NumberFormatException e) {
+            System.out.println(e.toString());
+        }
+        return val;
+    }
+
+    public int getBinary() {
+        String input = getString();
+        int val = 0;
+
+        try {
+            val = Integer.valueOf(input, 2);
+            System.out.println(String.format("Your number is %d", val));
+        } catch(NumberFormatException e) {
+            System.out.println(e.toString());
+        }
+        return val;
+    }
+
+    public int getHex() {
+        String input = getString();
+        int val = 0;
+
+        try {
+            val = Integer.valueOf(input, 16);
+            System.out.println(String.format("Your number is %d", val));
+        } catch(NumberFormatException e) {
+            System.out.println(e.toString());
+        }
+        return val;
     }
 }
