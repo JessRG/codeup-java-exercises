@@ -28,11 +28,19 @@ public class Input {
 
     // Get the user's input for integers
     public int getInt(int min, int max) {
-        int input;
+        int input = 0;
+        boolean incorrectInput;
         do {
-            input = getInt("Please enter in an integer: ");
+            incorrectInput = false;
+            try {
+                input = getInt("Please enter in an integer: ");
+            } catch(NumberFormatException e) {
+                System.out.println("This is not an Integer");
+                System.out.println();
+                incorrectInput = true;
+            }
 
-        } while (input < min || input > max);
+        } while (input < min || input > max || !incorrectInput);
         return input;
     }
 
@@ -40,9 +48,9 @@ public class Input {
     // Get the user's input with the option String parameter "prompt"
     public int getInt(String prompt) {
         System.out.print(prompt);
-//        return getInt();
+        return getInt();
 //        return getBinary();
-        return getHex();
+//        return getHex();
     }
 
     public int getInt() {
@@ -86,9 +94,10 @@ public class Input {
         return val;
     }
 
-    public int getBinary() {
+    public long getBinary() {
+        System.out.print("Enter Binary number: ");
         String input = getString();
-        int val = 0;
+        long val = 0;
 
         try {
             val = Integer.valueOf(input, 2);
@@ -99,9 +108,10 @@ public class Input {
         return val;
     }
 
-    public int getHex() {
+    public long getHex() {
+        System.out.print("Enter Hexadecimal: ");
         String input = getString();
-        int val = 0;
+        long val = 0;
 
         try {
             val = Integer.valueOf(input, 16);

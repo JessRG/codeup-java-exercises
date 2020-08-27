@@ -5,12 +5,12 @@ public class InputTest {
     public static void main(String[] args) {
 
         Input input = new Input();
-        try {
+//        try {
             do {
-//                 input.getInt(1, 10);
-//                System.out.print("Enter some whole integer number: ");
-//                String userInput = input.getString();
-                input.getInt("Enter some whole integer number: ");
+//                input.getInt("Enter some integer number: ");
+                input.getBinary();
+                input.getHex();
+
             } while( input.yesNo("Do you want to enter some info again? (Y/N) ") );
 
 //            do {
@@ -19,8 +19,8 @@ public class InputTest {
 ////                String userInput = input.getString();
 //                input.getDouble("Enter some double number: ");
 //            } while( input.yesNo("Do you want to enter some info again? (Y/N) ") );
-        } catch(Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+//        } catch(Exception ex) {
+//            System.out.println(ex.getMessage());
+//        }
     }
 }
