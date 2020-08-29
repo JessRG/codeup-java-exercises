@@ -6,7 +6,7 @@ import java.util.*;
 
 public class GroceryApplication {
 
-    private HashMap<String, ArrayList<Grocery>> groceries;
+    private HashMap<String, List<Grocery>> groceries;
 
     // Default constructor for GroceryApplication class
     public GroceryApplication() {
@@ -19,39 +19,50 @@ public class GroceryApplication {
         };
         groceries = new HashMap<>();
         for (String category : categories) {
-            ArrayList<Grocery> list = new ArrayList<>();
+            List<Grocery> list = new ArrayList<>();
             groceries.put(category, list);
         }
     }
 
-//    public HashMap<String, ArrayList<Grocery>> getGroceries() {
-//        return groceries;
-//    }
+    // Getter method
+    public HashMap<String, List<Grocery>> getGroceries() {
+        return groceries;
+    }
 
     public void buildGroceryList(Input input) {
-        boolean choice = input.yesNo("Would you like to enter a new item? ");
+        boolean choice = input.yesNo("Would you like to enter in a new item? ");
 
         if(choice) {
             do {
                 // Given an ordered list of grocery categories to choose from, select the category.
-                // Enter name of the item.
-                //Enter how many of the item.
-                displayOrderedList();
+                // Enter name of the item and quantity
+                String key = displayOrderedList(input);
 
-                String entry = input.getString();
+                if (groceries.containsKey(key)) {
+                    System.out.print("\nEnter the item and quantity: (i.e roses, 11) ");
+                    String[] userInput = input.getString().split(", ");
+                    int quantity = Integer.parseInt(userInput[1]);
+                    List<Grocery> l = groceries.get(key);
+                    l.add(new Grocery(userInput[0], quantity));
+                }
 
-//                if (groceries.containsKey(entry)) {
-//
-//                }
-            } while(input.yesNo("\nWould you like to add an item? "));
+                groceries.get(key).forEach((elem) -> System.out.print("\n" + elem.getName()));
+            } while(input.yesNo("\nWould you like to add a new item? "));
         }
     }
 
-    public void displayOrderedList() {
-        Map<String, ArrayList<Grocery>> map = new TreeMap<>(groceries);
-        for (HashMap.Entry category : map.entrySet()) {
-            System.out.println(category.getKey());
+    public String displayOrderedList(Input scan) {
+        Map<String, List<Grocery>> map = new TreeMap<>(groceries);
+        Set<String> keys = map.keySet();
+        List<String> listKeys = new ArrayList<>(keys);
+        for (int i = 0; i < listKeys.size(); i++) {
+            System.out.println(String.format("%d. %s", i + 1, listKeys.get(i)));
         }
+
+        System.out.print("Select a category from the list: ");
+        int selection = Integer.parseInt(scan.getString());
+
+        return listKeys.get(selection-1);
     }
 
     public static void main(String[] args) {
