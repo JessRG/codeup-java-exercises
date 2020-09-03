@@ -46,8 +46,17 @@ public class GroceryApplication {
                     l.add(new Grocery(userInput[0], quantity));
                 }
 
-                groceries.get(key).forEach((elem) -> System.out.print("\n" + elem.getName()));
-            } while(input.yesNo("\nWould you like to add a new item? "));
+//                groceries.get(key).forEach((elem) -> System.out.print("\n" + elem.getName()));
+            } while(input.yesNo("\nWould you like to add another new item? "));
+        }
+//        Once the user finalizes the list, they will be presented with a complete list organized
+//        alphabetically and grouped by category, and including quantity.
+        for (Map.Entry category : groceries.entrySet()) {
+            System.out.printf("\n%s:", category.getKey());
+            for (Grocery elem : ((ArrayList<Grocery>) category.getValue())) {
+                System.out.printf("\n\t%s %d", elem.getName(), elem.getQuantity());
+            }
+            System.out.println();
         }
     }
 
