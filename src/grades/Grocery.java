@@ -1,6 +1,7 @@
 package grades;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class Grocery implements Comparable<Grocery> {
@@ -33,10 +34,6 @@ public class Grocery implements Comparable<Grocery> {
 
     @Override
     public int compareTo(Grocery g) {
-        if (this.quantity > g.getQuantity())
-            return 1;
-        else if (this.quantity < g.getQuantity())
-            return -1;
         return this.name.compareTo(g.getName());
     }
 }
